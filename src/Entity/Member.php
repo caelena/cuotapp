@@ -2,29 +2,50 @@
 
 namespace App\Entity;
 
+
+use Doctrine\ORM\Mapping as ORM;
+
+#[ORM\Entity]
+#[ORM\Table(name: 'member')]
 class Member
 {
+    #[ORM\Id]
+    #[ORM\GeneratedValue(strategy: 'AUTO')]
+    #[ORM\Column(type: 'integer')]
     private ?int $id;
 
+    #[ORM\Column(type: 'string')]
     private ?string $firstName;
 
+    #[ORM\Column(type: 'string')]
     private ?string $lastName;
 
+    #[ORM\Column(type: 'string')]
     private ?string $address;
 
+    #[ORM\Column(type: 'string')]
     private ?string $city;
 
+    #[ORM\Column(type: 'string')]
     private ?string $zipCode;
 
+    #[ORM\Column(type: 'string', nullable: true)]
     private ?string $guardianFirstName;
 
+    #[ORM\Column(type: 'string', nullable: true)]
     private ?string $guardianLastName;
 
+    #[ORM\Column(type: 'string')]
     private ?string $iban;
 
+    #[ORM\Column(type: 'date', nullable: true)]
     private ?\DateTimeInterface $birthday;
 
+    #[ORM\Column(type: 'string')]
     private ?string $membershipCardNumber;
+
+    #[ORM\Column(type: 'text', nullable: true)]
+    private ?string $details;
 
     public function getId(): ?int
     {
@@ -138,6 +159,17 @@ class Member
     public function setMembershipCardNumber(?string $membershipCardNumber): Member
     {
         $this->membershipCardNumber = $membershipCardNumber;
+        return $this;
+    }
+
+    public function getDetails(): ?string
+    {
+        return $this->details;
+    }
+
+    public function setDetails(?string $details): Member
+    {
+        $this->details = $details;
         return $this;
     }
 }
