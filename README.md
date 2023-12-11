@@ -13,7 +13,7 @@ Colaboradores
 - Luis Ramón López: Coordinador del proyecto
 - 1
 - 2
-- 3
+- Rodrigo Ceacero Arellano 
 - 4
 - 5
 - 6
