@@ -14,9 +14,11 @@ Colaboradores
 - 1
 - María Mira Galindo
 - 3
+- 2
+- Rodrigo Ceacero Arellano 
 - 4
-- 5
-- 6
+- Javier López Padilla
+- María Del Moral Cobo
 
 (English)
 =========
@@ -32,6 +34,8 @@ Collaborators
 - 1
 - María Mira Galindo
 - 3
+- 2
+- Rodrigo Ceacero Arellano
 - 4
-- 5
-- 6
+- Javier López Padilla
+- María Del Moral Cobo
