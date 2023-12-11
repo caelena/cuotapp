@@ -11,10 +11,8 @@ del I.E.S. Oretania de Linares (Jaén).
 Colaboradores
 -------------
 - Luis Ramón López: Coordinador del proyecto
-- 1
+- Alejandro Patón Araujo
 - María Mira Galindo
-- 3
-- 2
 - Rodrigo Ceacero Arellano 
 - 4
 - Javier López Padilla
@@ -31,10 +29,8 @@ Lorem ipsum
 Collaborators
 -------------
 - Luis Ramón López: Project manager
-- 1
+- Alejandro Patón Araujo
 - María Mira Galindo
-- 3
-- 2
 - Rodrigo Ceacero Arellano
 - 4
 - Javier López Padilla
