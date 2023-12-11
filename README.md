@@ -31,7 +31,7 @@ Collaborators
 - Luis Ramón López: Project manager
 - 1
 - 2
-- 3
+- Rodrigo Ceacero Arellano
 - 4
 - 5
 - María Del Moral Cobo
