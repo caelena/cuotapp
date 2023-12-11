@@ -12,7 +12,7 @@ Colaboradores
 -------------
 - Luis Ramón López: Coordinador del proyecto
 - Alejandro Patón Araujo
-- 2
+- María Mira Galindo
 - Rodrigo Ceacero Arellano 
 - 4
 - Javier López Padilla
@@ -30,7 +30,7 @@ Collaborators
 -------------
 - Luis Ramón López: Project manager
 - Alejandro Patón Araujo
-- 2
+- María Mira Galindo
 - Rodrigo Ceacero Arellano
 - 4
 - Javier López Padilla
