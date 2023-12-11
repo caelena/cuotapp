@@ -12,7 +12,7 @@ Colaboradores
 -------------
 - Luis Ramón López: Coordinador del proyecto
 - 1
-- 2
+- María Mira Galindo
 - 3
 - 4
 - 5
@@ -30,7 +30,7 @@ Collaborators
 -------------
 - Luis Ramón López: Project manager
 - 1
-- 2
+- María Mira Galindo
 - 3
 - 4
 - 5
