@@ -37,6 +37,10 @@ class Fee
     #[ORM\Column(type: 'integer')]
     private ?int $extraAmount;
 
+    #[ORM\ManyToOne(targetEntity: Member::class, inversedBy: 'fees')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Member $member;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -127,6 +131,17 @@ class Fee
     public function setExtraAmount(?int $extraAmount): Fee
     {
         $this->extraAmount = $extraAmount;
+        return $this;
+    }
+
+    public function getMember(): ?Member
+    {
+        return $this->member;
+    }
+
+    public function setMember(?Member $member): Fee
+    {
+        $this->member = $member;
         return $this;
     }
 }

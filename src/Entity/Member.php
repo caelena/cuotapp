@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity]
@@ -46,6 +48,15 @@ class Member
 
     #[ORM\Column(type: 'text', nullable: true)]
     private ?string $details;
+
+    #[ORM\OneToMany(targetEntity: Fee::class, mappedBy: 'member')]
+    private Collection $fees;
+
+    public function __construct()
+    {
+        $this->fees = new ArrayCollection();
+    }
+
 
     public function getId(): ?int
     {
@@ -171,5 +182,13 @@ class Member
     {
         $this->details = $details;
         return $this;
+    }
+
+    /**
+     * @return Collection<int, Fee>
+     */
+    public function getFees(): Collection
+    {
+        return $this->fees;
     }
 }
