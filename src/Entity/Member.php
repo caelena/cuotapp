@@ -204,9 +204,21 @@ class Member
         return $this->academicYears;
     }
 
-    public function setAcademicYears(Collection $academicYears): Member
+    public function addAcademicYear(AcademicYear $academicYear): Member
     {
-        $this->academicYears = $academicYears;
+        if (!$this->getAcademicYears()->contains($academicYear)) {
+            $this->getAcademicYears()->add($academicYear);
+            $academicYear->getMembers()->add($this);
+        }
+        return $this;
+    }
+
+    public function removeAcademicYear(AcademicYear $academicYear): Member
+    {
+        if ($this->getAcademicYears()->contains($academicYear)) {
+            $this->getAcademicYears()->remove($academicYear);
+            $academicYear->getMembers()->remove($this);
+        }
         return $this;
     }
 

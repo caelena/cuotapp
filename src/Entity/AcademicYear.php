@@ -78,4 +78,22 @@ class AcademicYear
     {
         return $this->members;
     }
+
+    public function addMember(Member $member): AcademicYear
+    {
+        if (!$this->getMembers()->contains($member)) {
+            $this->getMembers()->add($member);
+            $member->addAcademicYear($this);
+        }
+        return $this;
+    }
+
+    public function removeMember(Member $member): AcademicYear
+    {
+        if ($this->getMembers()->contains($member)) {
+            $this->getMembers()->remove($member);
+            $member->removeAcademicYear($this);
+        }
+        return $this;
+    }
 }
