@@ -19,6 +19,9 @@ class User
     #[ORM\Column(type: 'string')]
     private ?string $password;
 
+    #[ORM\OneToOne(targetEntity: Professional::class)]
+    private ?Professional $professional;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -43,6 +46,17 @@ class User
     public function setPassword(?string $password): User
     {
         $this->password = $password;
+        return $this;
+    }
+
+    public function getProfessional(): ?Professional
+    {
+        return $this->professional;
+    }
+
+    public function setProfessional(?Professional $professional): User
+    {
+        $this->professional = $professional;
         return $this;
     }
 }
