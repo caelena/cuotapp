@@ -52,9 +52,13 @@ class Member
     #[ORM\OneToMany(targetEntity: Fee::class, mappedBy: 'member')]
     private Collection $fees;
 
+    #[ORM\ManyToMany(targetEntity: AcademicYear::class, inversedBy: 'members')]
+    private Collection $academicYears;
+
     public function __construct()
     {
         $this->fees = new ArrayCollection();
+        $this->academicYears = new ArrayCollection();
     }
 
 
@@ -191,4 +195,19 @@ class Member
     {
         return $this->fees;
     }
+
+    /**
+     * @return Collection<int, AcademicYear>
+     */
+    public function getAcademicYears(): Collection
+    {
+        return $this->academicYears;
+    }
+
+    public function setAcademicYears(Collection $academicYears): Member
+    {
+        $this->academicYears = $academicYears;
+        return $this;
+    }
+
 }

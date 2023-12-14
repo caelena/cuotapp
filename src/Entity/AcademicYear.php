@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity]
@@ -21,6 +23,15 @@ class AcademicYear
 
     #[ORM\Column(type: 'date')]
     private ?\DateTimeInterface $endDate;
+
+    #[ORM\ManyToMany(targetEntity: Member::class, mappedBy: 'academicYears')]
+    private Collection $members;
+
+    public function __construct()
+    {
+        $this->members = new ArrayCollection();
+    }
+
 
     public function getId(): ?int
     {
@@ -58,5 +69,13 @@ class AcademicYear
     {
         $this->endDate = $endDate;
         return $this;
+    }
+
+    /**
+     * @return Collection<int, Member>
+     */
+    public function getMembers(): Collection
+    {
+        return $this->members;
     }
 }
