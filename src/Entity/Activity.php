@@ -2,9 +2,10 @@
 
 namespace App\Entity;
 
+use App\Repository\ActivityRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity]
+#[ORM\Entity(repositoryClass: ActivityRepository::class)]
 #[ORM\Table(name: 'activity')]
 #[ORM\InheritanceType('JOINED')]
 #[ORM\DiscriminatorColumn(name: 'type', type: 'string')]

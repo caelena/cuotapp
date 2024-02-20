@@ -3,9 +3,10 @@
 namespace App\Entity;
 
 use App\Entity\Activity;
+use App\Repository\WeeklyActivityRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity]
+#[ORM\Entity(repositoryClass: WeeklyActivityRepository::class)]
 #[ORM\Table(name: 'weekly_activity')]
 class WeeklyActivity extends Activity
 {

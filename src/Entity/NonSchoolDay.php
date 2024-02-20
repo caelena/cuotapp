@@ -2,9 +2,10 @@
 
 namespace App\Entity;
 
+use App\Repository\NonSchoolDayRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity]
+#[ORM\Entity(repositoryClass: NonSchoolDayRepository::class)]
 #[ORM\Table(name: 'non_school_day')]
 class NonSchoolDay
 {

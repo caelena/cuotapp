@@ -2,11 +2,12 @@
 
 namespace App\Entity;
 
+use App\Repository\AcademicYearRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity]
+#[ORM\Entity(repositoryClass: AcademicYearRepository::class)]
 #[ORM\Table(name: 'academic_year')]
 class AcademicYear
 {
