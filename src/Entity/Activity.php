@@ -30,6 +30,14 @@ class Activity
     #[ORM\Column(type: 'date')]
     protected ?\DateTimeInterface $endDate;
 
+    #[ORM\ManyToOne(targetEntity: AcademicYear::class)]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?AcademicYear $academicYear = null;
+
+    #[ORM\ManyToOne(targetEntity: Professional::class)]
+    #[ORM\JoinColumn(nullable: true)]
+    private ?Professional $professional = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -87,6 +95,28 @@ class Activity
     public function setEndDate(?\DateTimeInterface $endDate): Activity
     {
         $this->endDate = $endDate;
+        return $this;
+    }
+
+    public function getAcademicYear(): ?AcademicYear
+    {
+        return $this->academicYear;
+    }
+
+    public function setAcademicYear(?AcademicYear $academicYear): Activity
+    {
+        $this->academicYear = $academicYear;
+        return $this;
+    }
+
+    public function getProfessional(): ?Professional
+    {
+        return $this->professional;
+    }
+
+    public function setProfessional(?Professional $professional): Activity
+    {
+        $this->professional = $professional;
         return $this;
     }
 }

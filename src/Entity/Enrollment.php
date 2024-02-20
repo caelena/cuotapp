@@ -19,6 +19,14 @@ class Enrollment
     #[ORM\Column(type: 'date')]
     private ?\DateTimeInterface $endDate;
 
+    #[ORM\ManyToOne(targetEntity: Member::class)]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Member $member = null;
+
+    #[ORM\ManyToOne(targetEntity: Activity::class)]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Activity $activity = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -43,6 +51,28 @@ class Enrollment
     public function setEndDate(?\DateTimeInterface $endDate): Enrollment
     {
         $this->endDate = $endDate;
+        return $this;
+    }
+
+    public function getMember(): ?Member
+    {
+        return $this->member;
+    }
+
+    public function setMember(?Member $member): Enrollment
+    {
+        $this->member = $member;
+        return $this;
+    }
+
+    public function getActivity(): ?Activity
+    {
+        return $this->activity;
+    }
+
+    public function setActivity(?Activity $activity): Enrollment
+    {
+        $this->activity = $activity;
         return $this;
     }
 }

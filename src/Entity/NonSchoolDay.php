@@ -19,6 +19,10 @@ class NonSchoolDay
     #[ORM\Column(type: 'string', nullable: true)]
     private ?string $description;
 
+    #[ORM\ManyToOne(targetEntity: AcademicYear::class)]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?AcademicYear $academicYear = null;
+
     /**
      * @return mixed
      */
@@ -46,6 +50,17 @@ class NonSchoolDay
     public function setDescription(?string $description): NonSchoolDay
     {
         $this->description = $description;
+        return $this;
+    }
+
+    public function getAcademicYear(): ?AcademicYear
+    {
+        return $this->academicYear;
+    }
+
+    public function setAcademicYear(?AcademicYear $academicYear): NonSchoolDay
+    {
+        $this->academicYear = $academicYear;
         return $this;
     }
 }

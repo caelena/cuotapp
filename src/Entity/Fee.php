@@ -41,6 +41,10 @@ class Fee
     #[ORM\JoinColumn(nullable: false)]
     private ?Member $member;
 
+    #[ORM\ManyToOne(targetEntity: AcademicYear::class)]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?AcademicYear $academicYear = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -142,6 +146,17 @@ class Fee
     public function setMember(?Member $member): Fee
     {
         $this->member = $member;
+        return $this;
+    }
+
+    public function getAcademicYear(): ?AcademicYear
+    {
+        return $this->academicYear;
+    }
+
+    public function setAcademicYear(?AcademicYear $academicYear): Fee
+    {
+        $this->academicYear = $academicYear;
         return $this;
     }
 }
