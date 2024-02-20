@@ -27,9 +27,24 @@ class AcademicYear
     #[ORM\ManyToMany(targetEntity: Member::class, mappedBy: 'academicYears')]
     private Collection $members;
 
+    #[ORM\OneToMany(targetEntity: NonSchoolDay::class, mappedBy: 'academicYear')]
+    #[ORM\OrderBy(['date' => 'ASC'])]
+    private Collection $nonSchoolDays;
+
+    #[ORM\OneToMany(targetEntity: Fee::class, mappedBy: 'academicYear')]
+    #[ORM\OrderBy(['issueDate' => 'ASC'])]
+    private Collection $fees;
+
+    #[ORM\OneToMany(targetEntity: Activity::class, mappedBy: 'academicYear')]
+    #[ORM\OrderBy(['startDate' => 'ASC', 'endDate' => 'ASC'])]
+    private Collection $activities;
+
     public function __construct()
     {
         $this->members = new ArrayCollection();
+        $this->nonSchoolDays = new ArrayCollection();
+        $this->fees = new ArrayCollection();
+        $this->activities = new ArrayCollection();
     }
 
 
@@ -94,6 +109,86 @@ class AcademicYear
             $this->getMembers()->remove($member);
             $member->removeAcademicYear($this);
         }
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, NonSchoolDay>
+     */
+    public function getNonSchoolDays(): Collection
+    {
+        return $this->nonSchoolDays;
+    }
+
+    public function addNonSchoolDay(NonSchoolDay $nonSchoolDay): AcademicYear
+    {
+        if (!$this->nonSchoolDays->contains($nonSchoolDay)) {
+            $this->nonSchoolDays->add($nonSchoolDay);
+            $nonSchoolDay->setAcademicYear($this);
+        }
+
+        return $this;
+    }
+    public function removeNonSchoolDay(NonSchoolDay $nonSchoolDay): AcademicYear
+    {
+        if ($this->nonSchoolDays->removeElement($nonSchoolDay)) {
+            $nonSchoolDay->setAcademicYear(null);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Fee>
+     */
+    public function getFees(): Collection
+    {
+        return $this->fees;
+    }
+
+
+    public function addFee(Fee $fee): AcademicYear
+    {
+        if (!$this->fees->contains($fee)) {
+            $this->fees->add($fee);
+            $fee->setAcademicYear($this);
+        }
+
+        return $this;
+    }
+    public function removeFee(Fee $fee): AcademicYear
+    {
+        if ($this->fees->removeElement($fee)) {
+            $fee->setAcademicYear(null);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Activity>
+     */
+    public function getActivities(): Collection
+    {
+        return $this->activities;
+    }
+
+
+    public function addActivity(Activity $activity): AcademicYear
+    {
+        if (!$this->activities->contains($activity)) {
+            $this->activities->add($activity);
+            $activity->setAcademicYear($this);
+        }
+
+        return $this;
+    }
+    public function removeActivity(Activity $activity): AcademicYear
+    {
+        if ($this->activities->removeElement($activity)) {
+            $activity->setAcademicYear(null);
+        }
+
         return $this;
     }
 }

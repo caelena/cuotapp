@@ -41,7 +41,7 @@ class Fee
     #[ORM\JoinColumn(nullable: false)]
     private ?Member $member;
 
-    #[ORM\ManyToOne(targetEntity: AcademicYear::class)]
+    #[ORM\ManyToOne(targetEntity: AcademicYear::class, inversedBy: 'fees')]
     #[ORM\JoinColumn(nullable: false)]
     private ?AcademicYear $academicYear = null;
 

@@ -19,7 +19,7 @@ class NonSchoolDay
     #[ORM\Column(type: 'string', nullable: true)]
     private ?string $description;
 
-    #[ORM\ManyToOne(targetEntity: AcademicYear::class)]
+    #[ORM\ManyToOne(targetEntity: AcademicYear::class, inversedBy: 'nonSchoolDays')]
     #[ORM\JoinColumn(nullable: false)]
     private ?AcademicYear $academicYear = null;
 

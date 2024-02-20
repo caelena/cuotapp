@@ -30,11 +30,11 @@ class Activity
     #[ORM\Column(type: 'date')]
     protected ?\DateTimeInterface $endDate;
 
-    #[ORM\ManyToOne(targetEntity: AcademicYear::class)]
+    #[ORM\ManyToOne(targetEntity: AcademicYear::class, inversedBy: 'activities')]
     #[ORM\JoinColumn(nullable: false)]
     private ?AcademicYear $academicYear = null;
 
-    #[ORM\ManyToOne(targetEntity: Professional::class)]
+    #[ORM\ManyToOne(targetEntity: Professional::class, inversedBy: 'activities')]
     #[ORM\JoinColumn(nullable: true)]
     private ?Professional $professional = null;
 
