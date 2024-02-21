@@ -4,6 +4,7 @@ namespace App\DataFixtures;
 
 use App\Factory\AcademicYearFactory;
 use App\Factory\MemberFactory;
+use App\Factory\UserFactory;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 
@@ -28,6 +29,18 @@ class AppFixtures extends Fixture
                 'academicYears' => AcademicYearFactory::randomRange(1, 2)
             ];
         });
+
+        UserFactory::createOne([
+            'userName' => 'admin',
+            'password' => 'admin'
+        ]);
+
+        UserFactory::createOne([
+            'userName' => 'chuck',
+            'password' => 'norris'
+        ]);
+
+        UserFactory::createMany(10);
 
         $manager->flush();
     }
