@@ -46,7 +46,8 @@ class AppFixtures extends Fixture
 
         UserFactory::createOne([
             'userName' => 'admin',
-            'password' => 'admin'
+            'password' => 'admin',
+            'admin' => true
         ]);
 
         UserFactory::createOne([

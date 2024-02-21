@@ -23,6 +23,9 @@ class User
     #[ORM\OneToOne(targetEntity: Professional::class)]
     private ?Professional $professional;
 
+    #[ORM\Column(type: 'boolean')]
+    private ?bool $admin;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -58,6 +61,17 @@ class User
     public function setProfessional(?Professional $professional): User
     {
         $this->professional = $professional;
+        return $this;
+    }
+
+    public function isAdmin(): ?bool
+    {
+        return $this->admin;
+    }
+
+    public function setAdmin(?bool $admin): User
+    {
+        $this->admin = $admin;
         return $this;
     }
 }

@@ -49,6 +49,7 @@ final class UserFactory extends ModelFactory
         return [
             'password' => self::faker()->password(),
             'userName' => self::faker()->unique()->bothify('u-????##'),
+            'admin' => false
         ];
     }
 
