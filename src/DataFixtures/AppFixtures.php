@@ -4,6 +4,7 @@ namespace App\DataFixtures;
 
 use App\Factory\AcademicYearFactory;
 use App\Factory\MemberFactory;
+use App\Factory\ProfessionalFactory;
 use App\Factory\UserFactory;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
@@ -41,6 +42,7 @@ class AppFixtures extends Fixture
         ]);
 
         UserFactory::createMany(10);
+        ProfessionalFactory::createMany(30);
 
         $manager->flush();
     }
