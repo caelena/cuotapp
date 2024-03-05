@@ -47,7 +47,6 @@ final class UserFactory extends ModelFactory
     protected function getDefaults(): array
     {
         return [
-            'password' => self::faker()->password(),
             'userName' => self::faker()->unique()->bothify('u-????##'),
             'admin' => false
         ];

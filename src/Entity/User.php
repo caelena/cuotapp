@@ -79,7 +79,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function getRoles()
     {
-        return ['ROLE_USER'];
+        $roles = ['ROLE_USER'];
+        if ($this->isAdmin()) {
+            $roles[] = 'ROLE_ADMIN';
+        }
+        if ($this->getProfessional()) {
+            $roles[] = 'ROLE_PROFESSIONAL';
+        }
+        return array_unique($roles);
     }
 
     public function getSalt()

@@ -3,9 +3,14 @@
 {% block body %}
     <div class="container">
         <h1>Please log in</h1>
+        {% if error %}
+            <div class="alert alert-danger alert-dismissible">
+                {{ error.message }}
+            </div>
+        {% endif %}
         <form method="post" class="form">
-            <input type="text" name="_username" placeholder="Enter username" class="form-control">
-            <input type="password" name="_password" placeholder="Enter password" class="form-control">
+            <input type="text" name="_username" value="{{ last_username }}" placeholder="Enter username" class="form-control" {% if not last_username %}autofocus{% endif %}>
+            <input type="password" name="_password" placeholder="Enter password" class="form-control" {% if last_username %}autofocus{% endif %}>
             <button type="submit" class="btn btn-primary">Log in</button>
         </form>
     </div>

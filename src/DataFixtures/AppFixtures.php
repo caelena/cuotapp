@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\User;
 use App\Factory\AcademicYearFactory;
 use App\Factory\MemberFactory;
 use App\Factory\NonSchoolDayFactory;
@@ -9,9 +10,18 @@ use App\Factory\ProfessionalFactory;
 use App\Factory\UserFactory;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class AppFixtures extends Fixture
 {
+
+    private UserPasswordHasherInterface $passwordHasher;
+
+    public function __construct(UserPasswordHasherInterface $passwordHasher)
+    {
+        $this->passwordHasher = $passwordHasher;
+    }
+
     public function load(ObjectManager $manager): void
     {
         AcademicYearFactory::createOne([
@@ -46,16 +56,18 @@ class AppFixtures extends Fixture
 
         UserFactory::createOne([
             'userName' => 'admin',
-            'password' => 'admin',
+            'password' => $this->passwordHasher->hashPassword(new User(), 'admin'),
             'admin' => true
         ]);
 
         UserFactory::createOne([
             'userName' => 'chuck',
-            'password' => 'norris'
+            'password' => $this->passwordHasher->hashPassword(new User(), 'norris'),
         ]);
 
-        UserFactory::createMany(10);
+        UserFactory::createMany(10, [
+            'password' => $this->passwordHasher->hashPassword(new User(), 'test')
+        ]);
         ProfessionalFactory::createMany(30);
 
         $manager->flush();
