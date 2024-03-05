@@ -1,0 +1,12 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <h1>Please log in</h1>
+        <form method="post" class="form">
+            <input type="text" name="_username" placeholder="Enter username" class="form-control">
+            <input type="password" name="_password" placeholder="Enter password" class="form-control">
+            <button type="submit" class="btn btn-primary">Log in</button>
+        </form>
+    </div>
+{% endblock %}
